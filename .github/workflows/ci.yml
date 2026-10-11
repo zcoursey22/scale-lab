@@ -1,9 +1,13 @@
 name: CI
+
 on:
   push:
     branches: [master]
-    paths: [api/**]
   pull_request:
+
+permissions:
+  contents: read
+
 jobs:
   check:
     runs-on: ubuntu-latest
@@ -11,14 +15,12 @@ jobs:
       run:
         working-directory: api
     steps:
-      - uses: actions/checkout@v4
-      - uses: pnpm/action-setup@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v7
+      - uses: pnpm/setup@v3
         with:
-          node-version: 24
-          cache: pnpm
-          cache-dependency-path: api/pnpm-lock.yaml
-      - run: pnpm install --frozen-lockfile
+          working-directory: api
+          cache: true
+          require-lockfile: true
       - run: pnpm typecheck
       - run: pnpm lint
       - run: pnpm test
