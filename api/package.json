@@ -16,7 +16,7 @@
     "test": "echo \"No tests\" && exit 0",
     "start": "node dist/server.js",
     "prepare": "cd .. && husky api/.husky",
-    "docker:build": "docker build -t scale-lab-api .",
+    "docker:build": "docker build -t zcoursey22/scale-lab-api:fail .",
     "docker:run": "docker run --rm -p 3000:3000 scale-lab-api"
   },
   "license": "ISC",
