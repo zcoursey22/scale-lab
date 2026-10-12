@@ -2,8 +2,7 @@ name: CI
 
 on:
   push:
-    # TODO: remove ci-publish before merging
-    branches: [master, ci-publish]
+    branches: [master]
   pull_request:
 
 permissions:
